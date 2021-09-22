@@ -1,0 +1,52 @@
+[2021-09-22 10:03:52]: {'name': '', 'path': 'my_anime/season 01/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 10:03:52]: name -> [asdafa] Anime Serie - 02 [a0j0qa].mkv
+[2021-09-22 10:03:52]: new_name -> [asdafa] Anime Serie S01 E02 [a0j0qa].mkv
+[2021-09-22 10:03:52]: name -> [asdafa] Anime Serie - 01 [a0j0qa].mkv
+[2021-09-22 10:03:52]: new_name -> [asdafa] Anime Serie S01 E01 [a0j0qa].mkv
+[2021-09-22 10:03:52]: name -> [asdafa] Anime Serie - 03 [a0j0qa].mkv
+[2021-09-22 10:03:52]: new_name -> [asdafa] Anime Serie S01 E03 [a0j0qa].mkv
+[2021-09-22 10:03:52]: name -> [asdafa] Anime Serie - 04 [a0j0qa].mkv
+[2021-09-22 10:03:52]: new_name -> [asdafa] Anime Serie S01 E04 [a0j0qa].mkv
+[2021-09-22 10:06:19]: {'name': '', 'path': 'my_anime/season 01/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 10:06:19]: name -> [asdafa] Anime Serie - 02 [a0j0qa].mkv
+[2021-09-22 10:06:19]: new_name -> Anime Serie S01 E02.mkv
+[2021-09-22 10:06:19]: name -> [asdafa] Anime Serie - 01 [a0j0qa].mkv
+[2021-09-22 10:06:19]: new_name -> Anime Serie S01 E01.mkv
+[2021-09-22 10:06:19]: name -> [asdafa] Anime Serie - 03 [a0j0qa].mkv
+[2021-09-22 10:06:19]: new_name -> Anime Serie S01 E03.mkv
+[2021-09-22 10:06:19]: name -> [asdafa] Anime Serie - 04 [a0j0qa].mkv
+[2021-09-22 10:06:19]: new_name -> Anime Serie S01 E04.mkv
+[2021-09-22 10:12:19]: {'name': '', 'path': 'my_anime/season 01/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 10:12:19]: ERROR - [Errno 2] No such file or directory: 'my_anime/season 01/'
+[2021-09-22 10:12:25]: {'name': '', 'path': 'my_anime/season 03/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 10:12:25]: name -> [asdafa] Anime Serie - 02 [a0j0qa].mkv
+[2021-09-22 10:12:25]: new_name -> Anime Serie S03 E02.mkv
+[2021-09-22 10:12:25]: name -> [asdafa] Anime Serie - 01 [a0j0qa].mkv
+[2021-09-22 10:12:25]: new_name -> Anime Serie S03 E01.mkv
+[2021-09-22 10:12:25]: name -> [asdafa] Anime Serie - 03 [a0j0qa].mkv
+[2021-09-22 10:12:25]: new_name -> Anime Serie S03 E03.mkv
+[2021-09-22 10:12:25]: name -> [asdafa] Anime Serie - 04 [a0j0qa].mkv
+[2021-09-22 10:12:25]: new_name -> Anime Serie S03 E04.mkv
+[2021-09-22 13:36:41]: {'name': '', 'path': 'my_anime/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 13:36:41]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 02 [a0j0qa].mkv
+[2021-09-22 13:36:41]: ERROR - 'str' object has no attribute 'items'
+[2021-09-22 13:38:35]: {'name': '', 'path': 'my_anime/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 13:38:35]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 02 [a0j0qa].mkv
+[2021-09-22 13:38:35]: ERROR - 'str' object has no attribute 'items'
+[2021-09-22 13:39:14]: {'name': '', 'path': 'my_anime/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 13:39:14]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 02 [a0j0qa].mkv
+[2021-09-22 13:39:14]: ERROR - 'str' object has no attribute 'items'
+[2021-09-22 13:39:34]: {'name': '', 'path': 'my_anime/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 13:39:34]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 02 [a0j0qa].mkv
+[2021-09-22 13:39:34]: ERROR - 'str' object has no attribute 'items'
+[2021-09-22 13:40:25]: {'name': '', 'path': 'my_anime/', 'sequencial': 'no', 'all': 'yes'}
+[2021-09-22 13:40:25]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 02 [a0j0qa].mkv
+[2021-09-22 13:40:25]: {'Tensei shitara Slime Datta Ken 2nd Season Part 2': ((' 2nd Season Part 2', ''),), 'Anime Serie 2nd Season Part 2': ((' 2nd Season Part 2', ''),)}
+[2021-09-22 13:40:25]: custom -> Tensei shitara Slime Datta Ken 2nd Season Part 2
+[2021-09-22 13:40:25]: custom -> Anime Serie 2nd Season Part 2
+[2021-09-22 13:40:25]: new_name -> Anime Serie S01 E02.mkv
+[2021-09-22 13:40:25]: name -> [asdafa] Anime Serie 2nd Season Part 2 - 01 [a0j0qa].mkv
+[2021-09-22 13:40:25]: {'Tensei shitara Slime Datta Ken 2nd Season Part 2': ((' 2nd Season Part 2', ''),), 'Anime Serie 2nd Season Part 2': ((' 2nd Season Part 2', ''),)}
+[2021-09-22 13:40:25]: custom -> Tensei shitara Slime Datta Ken 2nd Season Part 2
+[2021-09-22 13:40:25]: custom -> Anime Serie 2nd Season Part 2
+[2021-09-22 13:40:25]: new_name -> Anime Serie S01 E01.mkv
