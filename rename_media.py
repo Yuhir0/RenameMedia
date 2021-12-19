@@ -3,12 +3,6 @@ from datetime import datetime
 import re
 import os
 
-try:
-    from rename_media_settings import *
-except:
-    log('Settings import failed')
-    CUSTOM_REPLACE = dict()
-
 
 LOG_FILE = f"./{sys.modules[__name__].__file__.replace('.py', '')}.log"
 loging = None
@@ -32,6 +26,7 @@ args_dict = dict(
     path='./',
     sequencial='no',
     all='no',
+    title=''
 )
 
 
@@ -66,7 +61,7 @@ def replacement_name(name):
 
 
 def get_season_from_path(path):
-    search = re.search(season_pattern, path)
+    search = re.search(season_pattern, path, flags=re.IGNORECASE)	
     if search:
         return search.group(1)
     return '01'
@@ -81,24 +76,33 @@ def get_replacements(name):
     return REPLACEMENTS
 
 
+def get_chap_and_ext_from_name(name):
+    search = re.search(only_chapter_pattern, name)
+    if search:
+        return search.group(1), search.group(2)
+    else:
+        return '××'
+
+
 def replace_name(name, path, sequencial=False):
     log(f'name -> {name}')
-    new_name = name
-    for pattern, replacement in get_replacements(name):
-        new_name = re.sub(pattern, replacement, new_name)
-    """
-    if sequencial:
-        new_name = secuancial_name(name, path)
-    else:
-        new_name = replacement_name(name)
-    """
     season = get_season_from_path(path)
-    search = re.search(chapter_pattern, name)
-    if search:
-        cap = search.group(1)
+    log(f'season -> {season}')
+    chap, ext = get_chap_and_ext_from_name(name)
+    log(f'chap -> {chap}')
+    new_name = name
+    if args_dict["title"]:
+        new_name = f'{args_dict["title"]} S{season} E{chap}{ext}'
     else:
-        cap = '××'
-    new_name = re.sub(chapter_pattern, f'S{season} E{cap}', new_name)
+        for pattern, replacement in get_replacements(name):
+            new_name = re.sub(pattern, replacement, new_name)
+        """
+        if sequencial:
+            new_name = secuancial_name(name, path)
+        else:
+            new_name = replacement_name(name)
+        """
+        new_name = re.sub(chapter_pattern, f'S{season} E{chap}', new_name)
     log(f'new_name -> {new_name}')
     os.rename(path + name, path + new_name)
 
