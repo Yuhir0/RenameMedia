@@ -6,12 +6,15 @@ import os
 
 LOG_FILE = f"./{sys.modules[__name__].__file__.replace('.py', '')}.log"
 loging = None
+CHAPTER_METADATA = '.last_chap'
 
 REPLACEMENTS = (
     (r'\[[^\]]+\]', ''),
     (r'\([^\)]+\)', ''),
     (r'^\s+', ''),
     (r'\s+\.', '.'),
+    (r'-', ''),
+    (r'\s\s', ' '),
 )
 
 only_chapter_pattern = r'\-\s+(\d+).*(\.\w+)$'
@@ -76,23 +79,42 @@ def get_replacements(name):
     return REPLACEMENTS
 
 
-def get_chap_and_ext_from_name(name):
+def store_chap_metadata(path, chap):
+    with open(os.path.join(path, CHAPTER_METADATA), 'w') as metadata:
+        metadata.write(chap)
+
+
+def get_next_chapter(path):
+    full_path = os.path.join(path, CHAPTER_METADATA)
+    if os.path.exists(full_path):
+        with open(full_path, 'r') as metadata:
+            chap = str(int(metadata.read()) + 1)
+    else:
+        chap = '01'
+    store_chap_metadata(path, chap)
+    return chap
+
+
+def get_chap_and_ext_from_name(name, path):
     search = re.search(only_chapter_pattern, name)
     if search:
-        return search.group(1), search.group(2)
+        chap = search.group(1)
+        ext = search.group(2)
+        store_chap_metadata(path, chap)
+        return chap, ext
     else:
-        return '××'
+        return get_next_chapter(path), '.mkv'
 
 
 def replace_name(name, path, sequencial=False):
     log(f'name -> {name}')
     season = get_season_from_path(path)
     log(f'season -> {season}')
-    chap, ext = get_chap_and_ext_from_name(name)
+    chap, ext = get_chap_and_ext_from_name(name, path)
     log(f'chap -> {chap}')
     new_name = name
     if args_dict["title"]:
-        new_name = f'{args_dict["title"]} S{season} E{chap}{ext}'
+        new_name = f'{args_dict["title"]} S{season} E{chap.zfill(2)}{ext}'
     else:
         for pattern, replacement in get_replacements(name):
             new_name = re.sub(pattern, replacement, new_name)
@@ -107,9 +129,20 @@ def replace_name(name, path, sequencial=False):
     os.rename(path + name, path + new_name)
 
 
+def dir_sort_filter(item):
+    for rep in REPLACEMENTS:
+        item = re.sub(rep[0], rep[1], item)
+    print(item)
+    return item
+
+
 def replace_all_files_in_path(path):
-    for _file in os.listdir(path):
-        if os.path.isfile(os.path.join(path, _file)):
+    ls_dir = os.listdir(path)
+    ls_dir.sort(key=dir_sort_filter)
+    print(ls_dir)
+    for _file in ls_dir:
+        if not _file.startswith('.') \
+            and os.path.isfile(os.path.join(path, _file)):
             replace_name(_file, path)
 
 
