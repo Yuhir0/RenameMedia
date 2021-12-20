@@ -132,14 +132,12 @@ def replace_name(name, path, sequencial=False):
 def dir_sort_filter(item):
     for rep in REPLACEMENTS:
         item = re.sub(rep[0], rep[1], item)
-    print(item)
     return item
 
 
 def replace_all_files_in_path(path):
     ls_dir = os.listdir(path)
     ls_dir.sort(key=dir_sort_filter)
-    print(ls_dir)
     for _file in ls_dir:
         if not _file.startswith('.') \
             and os.path.isfile(os.path.join(path, _file)):
