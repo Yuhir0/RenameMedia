@@ -1,10 +1,12 @@
 import sys
-from datetime import datetime
 import re
 import os
 
+from datetime import datetime
 
-LOG_FILE = f"./{sys.modules[__name__].__file__.replace('.py', '')}.log"
+
+
+LOG_FILE = sys.modules[__name__].__file__.replace('.py', '.log')
 loging = None
 CHAPTER_METADATA = '.last_chap'
 
@@ -70,15 +72,6 @@ def get_season_from_path(path):
     return '01'
 
 
-def get_replacements(name):
-    log(CUSTOM_REPLACE)
-    for key, custom in CUSTOM_REPLACE.items():
-        log(f'custom -> {key}')
-        if key in name:
-            return value + REPLACEMENTS
-    return REPLACEMENTS
-
-
 def store_chap_metadata(path, chap):
     with open(os.path.join(path, CHAPTER_METADATA), 'w') as metadata:
         metadata.write(chap)
@@ -116,7 +109,7 @@ def replace_name(name, path, sequencial=False):
     if args_dict["title"]:
         new_name = f'{args_dict["title"]} S{season} E{chap.zfill(2)}{ext}'
     else:
-        for pattern, replacement in get_replacements(name):
+        for pattern, replacement in REPLACEMENTS:
             new_name = re.sub(pattern, replacement, new_name)
         """
         if sequencial:
