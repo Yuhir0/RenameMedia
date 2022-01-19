@@ -1,6 +1,8 @@
 ## Rename Media
 
-This scrip is thinked to automate the rename work, you can rename your series to fit next format
+This scrip is thinked to automate the rename work, you can rename your series to fit next format. This format is the most common to add the metadata for differents players.
+
+##### Format 
 
 `Title S01 E01`
 Where: 
@@ -36,4 +38,4 @@ For example
 python3 rename_media.py path="/media/Series/Kimetsu no Yaiba/Season 03"  name="[Publisher] Demon Slayer: Kimetsu no Yaiba: Yukaku-hen - 01 (1080p).mkv" title="Kimetsu no Yaiba"
 ```
 
-The result for this will be `/media/Series/Kimetsu no Yaiba/Kimetsu no Yaiba S03 E01.mkv`
+The result for this will be `/media/Series/Kimetsu no Yaiba/Season 03/Kimetsu no Yaiba S03 E01.mkv`

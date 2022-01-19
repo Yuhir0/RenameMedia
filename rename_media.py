@@ -20,7 +20,6 @@ REPLACEMENTS = (
 )
 
 only_chapter_pattern = r'\-\s+(\d+).*(\.\w+)$'
-sequencial_file_pattern = r'^\d+\.\w+$'
 extension_pattern = r'\.\w+$'
 
 chapter_pattern = r's*\-\s+(\d+)'
@@ -29,7 +28,6 @@ season_pattern = r'season\s?(\d+)'
 args_dict = dict(
     name='',
     path='./',
-    sequencial='no',
     all='no',
     title=''
 )
@@ -45,19 +43,6 @@ def get_args(*args):
         if (not name in args_dict):
             raise Exception(f'Unkown argument "{name}"')
         args_dict[name] = val
-
-
-def secuancial_name(name, path):
-    files = [_file for _file in os.listdir(path) if re.match(sequencial_file_pattern, _file) and os.path.isfile(os.path.join(path, _file))]
-    log(files)
-    extension = search = re.search(only_chapter_pattern, name).group(2)
-    if (not files):
-        return '1' + extension
-    else:
-        files.sort(reverse=True)
-        previous_file = re.sub(extension_pattern, '', files[0])
-        log(previous_file)
-        return str(int(previous_file) + 1) + extension
 
 
 def replacement_name(name):
@@ -99,7 +84,7 @@ def get_chap_and_ext_from_name(name, path):
         return get_next_chapter(path), '.mkv'
 
 
-def replace_name(name, path, sequencial=False):
+def replace_name(name, path):
     log(f'name -> {name}')
     season = get_season_from_path(path)
     log(f'season -> {season}')
