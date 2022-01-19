@@ -119,7 +119,9 @@ def replace_name(name, path, sequencial=False):
         """
         new_name = re.sub(chapter_pattern, f'S{season} E{chap}', new_name)
     log(f'new_name -> {new_name}')
-    os.rename(path + name, path + new_name)
+    full_path = os.path.join(path, name)
+    new_full_path = os.path.join(path, new_name)
+    os.rename(full_path, new_full_path)
 
 
 def dir_sort_filter(item):
