@@ -96,13 +96,8 @@ def replace_name(name, path):
     else:
         for pattern, replacement in REPLACEMENTS:
             new_name = re.sub(pattern, replacement, new_name)
-        """
-        if sequencial:
-            new_name = secuancial_name(name, path)
-        else:
-            new_name = replacement_name(name)
-        """
         new_name = re.sub(chapter_pattern, f'S{season} E{chap}', new_name)
+
     log(f'new_name -> {new_name}')
     full_path = os.path.join(path, name)
     new_full_path = os.path.join(path, new_name)
@@ -130,7 +125,7 @@ def main(*args):
     if args_dict['all'].lower() == 'yes':
         replace_all_files_in_path(args_dict['path'])
     else:
-        replace_name(args_dict['name'], args_dict['path'], args_dict['sequencial'].lower() == 'yes')
+        replace_name(args_dict['name'], args_dict['path'])
 
 
 if __name__ == '__main__':
