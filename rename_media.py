@@ -66,7 +66,7 @@ def get_season_from_path(path):
 
 def get_season(path):
     return str(conf_params.get('season', '01') if \
-        conf_params.get('force_confe', False) \
+        conf_params.get('force_config', False) \
         else get_season_from_path(path)).zfill(2)
 
 
@@ -102,7 +102,7 @@ def get_chap_and_ext_from_name(name, path):
 
 def get_title():
     return conf_params.get('title', '') if \
-         not args_dict['title'] or conf_params.get('force_confe', False) \
+         not args_dict['title'] or conf_params.get('force_config', False) \
          else args_dict['title']
 
 
