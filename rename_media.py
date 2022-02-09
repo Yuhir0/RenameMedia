@@ -5,12 +5,9 @@ import os
 
 from datetime import datetime
 
-subprocess.check_output([sys.executable, '-m', 'pip', 'install', '-r', '.requirements'])
 
-# Import requirements
-import yaml
-
-
+CODE_PATH = os.path.dirname(sys.modules[__name__].__file__)
+print(CODE_PATH)
 LOG_FILE = sys.modules[__name__].__file__.replace('.py', '.log')
 loging = None
 CHAPTER_METADATA = '.last_chap'
@@ -84,7 +81,7 @@ def get_next_chapter(path):
             if meta:
                 chap = str(int(meta) + 1)
     if not chap:
-        chap = str(conf_params.get('first_cap', '01'))
+        chap = str(conf_params.get('first_chap', '01'))
     store_chap_metadata(path, chap)
     return chap
 
@@ -164,6 +161,11 @@ def main(*args):
 if __name__ == '__main__':
     loging = open(LOG_FILE, 'a')
     try:
+        subprocess.check_output(['pip3', 'install', '-r', os.path.join(CODE_PATH, '.requirements')])
+
+        # Import requirements
+        import yaml
+
         main(*sys.argv[1:])
     except Exception as e:
         print(f'Execution filed!! - {e}')
